@@ -1,0 +1,105 @@
+:root{
+    --background-color: rgb(92, 219, 149);
+    --color: #05386b;
+    --text-color: #ff8c42;
+}
+
+body{
+    font-family: "Segoe UI", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ff7b73;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    color: white;
+
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    
+}
+
+h1{
+    color: white;
+}
+
+input{
+    border-radius: 6.25em;
+    box-sizing: border-box;
+    box-shadow: 0 0.125em 0.3125em rgba(black, 0.3);
+
+    border: 0;
+    outline: 0;
+    height: 50px;
+    width: 300px;
+    padding: 20px;
+    color: #ff7a7380;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+a{
+    color: white;
+}
+
+::placeholder { 
+    color: #ff7a7380;
+    opacity: 1; 
+  }
+  
+:-ms-input-placeholder { 
+    color: #ff7a7380;
+  }
+  
+::-ms-input-placeholder { 
+    color: #ff7a7380;
+  }
+
+.item{
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 5px;
+    background: transparent;
+    border: 0;
+    color: white;
+    width: 200px;
+}
+
+textarea{
+    color: white;
+}
+
+.itemLocation{
+    display: flex;
+    flex-direction: row;
+}
+
+i{
+    margin-top: 10px;
+    margin-left: 4px;
+    color: rgba(255, 0, 0, 0.301);
+}
+
+i:hover{
+    color: red;
+}
+
+#delete, #updateButton{
+    background: transparent;
+    border: 0;
+}
+
+#advice{
+    font-weight: 200;
+    color: rgba(255, 0, 0, 0.616);
+}
+
+#edit{
+    color: #f7e32ba4;
+}
+
+#edit:hover{
+    color: #f7e22b;
+}

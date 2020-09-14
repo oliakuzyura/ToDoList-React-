@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toDoApp</title>
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/register.css" />
+    <script
+      src="https://kit.fontawesome.com/122ff3489d.js"
+      crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+<input class="c-checkbox" type="checkbox" id="start">
+<input class="c-checkbox" type="checkbox" id="progress2">
+<input class="c-checkbox" type="checkbox" id="progress3">
+<input class="c-checkbox" type="checkbox" id="finish">
+<div class="c-form__progress"></div>
+
+<div class="c-formContainer">
+  <div class="c-welcome">Welcome aboard!</div>
+  <form action="/login" method="POST" class="c-form">
+    <div class="c-form__group">
+      <label class="c-form__label" for="username">
+                    <input
+                        name="username"
+                        value=""
+                        type="text"
+                        id="username"
+                        class="c-form__input"
+                        placeholder=" "
+                        pattern="[^\s]+"
+                        required>
+
+                    <label class="c-form__next" for="progress2" role="button">
+                        <span class="c-form__nextIcon"></span>
+                    </label>
+
+      <span class="c-form__groupLabel">Enter your username.</span>
+      <b class="c-form__border"></b>
+      </label>
+    </div>
+
+    <div class="c-form__group">
+      <label class="c-form__label" for="fpass">
+                    <input
+                        name="password"
+                        value=""
+                        type="password"
+                        id="fpass"
+                        class="c-form__input"
+                        placeholder=" "
+                        required>
+
+                   
+                        <button id="registerButton" class="c-form__next" type="submit"><span class="c-form__nextIcon"></span></button>
+                    
+
+      <span class="c-form__groupLabel">Enter your password.</span>
+      <b class="c-form__border"></b>
+      </label>
+    </div>
+
+    <label class="c-form__toggle" for="start">Login<span class="c-form__toggleIcon"></span></label>
+  </form>
+</div>
+</body>
+</html>

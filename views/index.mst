@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toDoApp</title>
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/index.css" />
+    <script
+      src="https://kit.fontawesome.com/122ff3489d.js"
+      crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+
+<h1>My toDo List</h1>
+<form action="/insertToDB" method="POST">
+    <input type="hidden" name="username" value="{{user}}">
+    <input name="name" id="name" type="text" value="" placeholder="itemToDo"/>
+</form>
+<i id="advice">Tap on item to edit and then enter.</i>
+{{^user}}
+     <a href="/login"">Login</a>
+{{/user}}
+{{^user}}
+     <a href="/register"">Register</a>
+{{/user}}
+{{#user}}
+<h4>Hello {{user}}</h4>
+{{/user}}
+{{#items}}
+   <div class="itemLocation">
+   <form action="/updateInDB" method="POST">
+        <input type="hidden" name="id" value="{{id}}">
+        <input name="name" value="{{name}}" class="item" id="{{id}}"/>
+    </form>
+    <form action="/deleteFromDB" method="POST">
+      <input type="hidden" name="id" value="{{id}}">
+      <button type=submit id="delete"><i class="fas fa-times"></i>  </button>
+    </form>
+      <input type="hidden" name="id" value="{{id}}">
+      <button id="updateButton" onclick="changeStyle({{id}})"><i id="edit" class="fas fa-pen-alt"></i> </button>
+    
+   </div>  
+{{/items}}
+
+<script>
+        function changeStyle(id){
+              console.log('I am here', id)
+                let elem = document.getElementById(id);
+                if(elem){
+                  elem.style.backgroundColor = "white";
+                  elem.style.color = "#ff7a7380";
+                }
+                return Promise.resolve("Dummy response to keep the console quiet");
+        }
+           
+    </script>
+</body>
+</html>
