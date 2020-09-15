@@ -71,11 +71,11 @@ app.post('/insertToDB', function(req, res) {
 });
 
 app.post('/deleteFromDB', function(req, res){
-  item.delete(req.body.id).then(items => res.redirect('/'));
+  item.delete(req.body.id).then(items => res.send(items));
 })
 
 app.post('/updateInDB', function(req, res){
-  item.update(req.body.id, req.body.name).then(items => res.redirect('/'));
+  item.update(req.body.id, req.body.name).then(items => res.send(items));
 })
 // Start the server
 const PORT = process.env.PORT || 8080;

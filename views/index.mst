@@ -45,7 +45,7 @@
 
 <script>
         function changeStyle(id){
-              console.log('I am here', id)
+
                 let elem = document.getElementById(id);
                 if(elem){
                   elem.style.backgroundColor = "white";
