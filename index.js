@@ -39,10 +39,15 @@ app.get("/", (req, res) => {
 
   app.get("/items", (req, res) => {
 
+     if(req.username){
+      item.getAllUserItems(req.username).then(items => {
+        res.send(items);
+      })
+     }else{
       item.getAll().then(items => {
         res.send(items);
       })
-
+     }
     });
 
 app.get("/register", (req, res) => {
@@ -61,8 +66,9 @@ app.get("/register", (req, res) => {
 // });
 
 app.post("/register", (req, res) => {
-  user.insert(req.body).then(items => res.redirect('/'));
   console.log(req.body);
+  user.insert(req.body).then(items => res.send(items));
+ 
 });
 
 app.post('/insertToDB', function(req, res) {
