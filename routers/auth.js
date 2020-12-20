@@ -11,15 +11,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
-// function sha512(password, salt) {
-//     const hash = crypto.createHmac('sha512', salt);
-//     hash.update(password);
-//     const value = hash.digest('hex');
-//     return {
-//         salt: salt,
-//         passwordHash: value
-//     };
-// };
+
 let isadmin;
 router.use(busboyBodyParser());
 //router.set('view engine', 'ejs');
@@ -44,8 +36,7 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function(user, done) {
     done(null, user);
   });
-// налаштування стратегії для визначення користувача, що виконує логін
-// на основі його username та password
+
 passport.use(new LocalStrategy((username, password, done) => {
     user.getAll()
         .then(users => {
@@ -62,51 +53,17 @@ passport.use(new LocalStrategy((username, password, done) => {
         .catch(err => done(err, null));
 
 }));
-// router.get("/checkUsername", (req, res) => {
-//     //console.log(req.query.username);
-    
-//     user.findByLogin(req.query.username)
-//         .then(user => {
-//             if(!user)
-//             {
-//                 res.status(200).json({});
-//             }
-//             else{
-//                 res.status(409).json({});
-//             }
-//         })
-//         .catch(err => res.status(404).json({}));
-// });
+
 router.get('/login', function (req, res) {
     res.render('login');
 });
 router.post('/login', passport.authenticate('local', { failureRedirect: '/login' }), function (req, res) {
-    console.log('I am here');
-    console.log(req.body)
+  
     res.send(true);
 });
-// router.get('/auth/logout', function (req, res) {
-//     req.logout();
-//     res.redirect('/');
-// });
 
-// router.get('/auth/register', function (req, res) {
-//     if (req.user) {
-//         if (req.user.role == "admin") isadmin = true;
-//         else isadmin = false;
-//     }
-//     res.render('new-user', { isadmin: isadmin,user:req.user });
-// });
-// router.post('/auth/register', function (req, res)  {
- 
-//     const hash_pass = sha512(req.body.password, serverSalt).passwordHash;
-//     console.log(req.body.birthDate);
-//     user.insert(req.body, hash_pass)
-//         .then(user => {
-//             res.status(200).send();
-//             res.render('login');
-//         })
-//         .catch(err => res.status(500).send(err));
- 
-// });
+router.get('/logout', function (req, res) {
+    req.logout();
+});
+
 module.exports = router;

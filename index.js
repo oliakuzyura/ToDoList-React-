@@ -38,10 +38,10 @@ app.get("/", (req, res) => {
   });
 
   app.get("/items", (req, res) => {
-
-     if(req.username){
-      item.getAllUserItems(req.username).then(items => {
-        res.send(items);
+    console.log(req.user);
+     if(req.user){
+      item.getAllUserItems(req.user.username).then(items => {
+        res.send(items)
       })
      }else{
       item.getAll().then(items => {
@@ -55,25 +55,16 @@ app.get("/register", (req, res) => {
 
 });
 
-// app.get("/login", (req, res) => {
-//   res.render('login');
-
-// });
-
-// app.post("/login", (req, res) => {
-//   console.log(req.body);
-//   res.redirect('/');
-// });
 
 app.post("/register", (req, res) => {
-  console.log(req.body);
+  
   user.insert(req.body).then(items => res.send(items));
  
 });
 
 app.post('/insertToDB', function(req, res) {
-  console.log(req.body)
-  item.insert(req.body.name, "").then(items => res.send(items));
+
+  item.insert(req.body.name, req.body.username).then(items => res.send(items));
 });
 
 app.post('/deleteFromDB', function(req, res){
